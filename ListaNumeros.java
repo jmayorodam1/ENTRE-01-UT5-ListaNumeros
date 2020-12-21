@@ -1,9 +1,10 @@
 
+
 /**
  * La clase representa a una lista de 
  * números enteros
  * 
- * @author - 
+ * @author - Javier Mayor
  * 
  */
 import java.util.Arrays;
@@ -11,6 +12,8 @@ import java.util.Arrays;
 public class ListaNumeros 
 {
     // definir atributos
+    private int[] lista;
+    private int pos;
 
     /**
      * Constructor de la clase ListaNumeros 
@@ -20,7 +23,8 @@ public class ListaNumeros
      * @param n el tamaño máximo de la lista
      */
     public ListaNumeros(int n) {
-         
+         lista = new int[n];
+         pos = 0;
     }
 
     /**
@@ -31,18 +35,29 @@ public class ListaNumeros
      * @return true si se ha podido añadir, false en otro caso
      */
     public boolean addElemento(int numero) {
+  
+     
         
-        
-        return true;
-
+       
+        if(!estaCompleta()){
+            
+            lista[pos] = numero;
+            pos++;
+            return true;
+            
+        }
+    
+    
+        return false;
     }
+    
 
     /**
      * devuelve true si la lista está completa, false en otro caso
      * Hacer sin if
      */
     public boolean estaCompleta() {
-         return true;
+         return pos == lista.length;
 
     }
 
@@ -51,14 +66,19 @@ public class ListaNumeros
      * Hacer sin if
      */
     public boolean estaVacia() {
-         return true;
+        if(pos > 0){
+            return false;
+        
+        }
+        
+        return true;
     }
 
     /**
      * devuelve el nº de elementos realmente guardados en la lista
      */
     public int getTotalNumeros() {
-        return 0;
+        return pos;
 
     }
 
@@ -66,7 +86,7 @@ public class ListaNumeros
      * Vacía la lista
      */
     public void vaciarLista() {
-         
+        this.pos = 0; 
     }
     
      /**
@@ -76,7 +96,12 @@ public class ListaNumeros
      * Si la lista está vacía devuelve ""
      */
     public String toString() {
-         
+        String str = "";
+        if(estaVacia()== false)
+        for(int i = 0; i < pos; i++){
+            str = str + String.format("%8d",lista[i]);
+        
+        }
         return "";
     }
     
@@ -124,7 +149,11 @@ public class ListaNumeros
      * borra el primer elemento de la lista
      */
     public void borrarPrimero() {
-         
+         for(int i = 0; i < pos; i++){
+            lista[i] = lista[i + 1];
+            pos--;
+            
+            }
 
     }
     
@@ -138,7 +167,21 @@ public class ListaNumeros
      *  
      */
     public void invertir(int n) {
-         
+          int tamaño = 0;
+          int s = 1;
+          int grupos = lista.length / n;
+          int p = n;
+          
+          while(s <= grupos + 1){
+              p = n * s;
+          for(int i = p - n; i <= p; i++){
+            tamaño = lista[i];
+            lista[i] = lista[p];
+            lista[p] = tamaño;
+            p--;
+            }
+            s++;
+        }
 
     }
 
