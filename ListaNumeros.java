@@ -167,25 +167,7 @@ public class ListaNumeros
      *  
      */
     public void invertir(int n) {
-<<<<<<< HEAD
-        
-=======
-          int tamaño = 0;
-          int s = 1;
-          int grupos = lista.length / n;
-          int p = n;
-          
-          while(s <= grupos + 1){
-              p = n * s;
-          for(int i = p - n; i <= p; i++){
-            tamaño = lista[i];
-            lista[i] = lista[p];
-            lista[p] = tamaño;
-            p--;
-            }
-            s++;
-        }
->>>>>>> 01dc4fada2ad59df6503cc88f301ea7ccf7f7297
+
 
     }
 
